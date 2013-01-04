@@ -9,7 +9,9 @@ What I set out to do:
 
 To use:
 * Install yeoman
-* Run/build
-    > yeoman server
-    > yeoman build & yeoman server:dist
+* Run the built-in yeoman server
 
+```bash    
+    yeoman server
+    yeoman build; yeoman server:dist
+```
