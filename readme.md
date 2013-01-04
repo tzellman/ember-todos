@@ -10,6 +10,7 @@ What I set out to do:
 To use:
 * Install yeoman
 * Run/build
-    > yeoman server
-    > yeoman build & yeoman server:dist
+    
+    yeoman server
+    yeoman build; yeoman server:dist
 
