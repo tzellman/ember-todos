@@ -1,0 +1,30 @@
+{
+  "name": "ember-todos",
+  "version": "0.0.1",
+  "description": "sample todos application using ember, require, bootstrap and yeoman tooling",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt-ember-templates": "~0.4.1",
+    "grunt-string-replace": "~0.1.1-1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tzellman/ember-todos.git"
+  },
+  "author": "tzellman",
+  "license": "BSD",
+  "gitHead": "5e0406ea82a4972f6218c348262202f098ee7102",
+  "keywords": [
+    "ember",
+    "yeoman",
+    "require",
+    "bootstrap"
+  ]
+}

@@ -66,12 +66,16 @@ module.exports = function (grunt) {
             reload:{
                 files:[
                     'app/*.html',
-                    'temp/styles/**/*.css',
                     'app/styles/**/*.css',
                     'app/scripts/**/*.js',
+                    'app/scripts/**/*.hbs',
                     'app/images/**/*'
                 ],
-                tasks:'reload'
+                tasks:'string-replace reload'
+            },
+            ember_templates: {
+                files: 'app/scripts/**/*.hbs',
+                tasks: 'ember_templates reload'
             }
         },
 
@@ -103,6 +107,35 @@ module.exports = function (grunt) {
             },
             globals:{
                 jQuery:true
+            }
+        },
+
+        ember_templates: {
+            options: {
+                templateName: function(sourceFile) {
+                    return sourceFile.slice(sourceFile.lastIndexOf('/')+1);
+                }
+            },
+            compile: {
+                files: {
+                    "temp/scripts/app/templates.js": grunt.file.expandFiles('app/scripts/app/**/*.hbs')
+                }
+            }
+        },
+
+        "string-replace": {
+            all: {
+                files: {
+                    "temp/scripts/main.js": "app/scripts/main.js"
+                },
+                options: {
+                    replacements: [{
+                        pattern: /\'\$APP_JS\'/ig,
+                        replacement: "'" + grunt.file.expandFiles('app/scripts/app/**/*.js').map(function(f){
+                            return f.replace('app/scripts/', '').replace('.js', '');
+                        }).join("',\n        '") + "'"
+                    }]
+                }
             }
         },
 
@@ -170,13 +203,16 @@ module.exports = function (grunt) {
             optimize:'none',
             baseUrl:'./scripts',
             wrap:true,
-            name:'app'
+            name:'main'
         },
 
         // While Yeoman handles concat/min when using
         // usemin blocks, you can still use them manually
         concat:{
-            dist:''
+            all: {
+                src: ['temp/templates/compiled/*.js'],
+                dest: 'temp/scripts/app/templates.js'
+            }
         },
 
         min:{
@@ -186,5 +222,10 @@ module.exports = function (grunt) {
 
     // Alias the `test` task to run the `mocha` task instead
     grunt.registerTask('test', 'server:phantom mocha');
+    grunt.loadNpmTasks('grunt-ember-templates');
+    grunt.loadNpmTasks('grunt-string-replace');
+
+    grunt.renameTask('clean', 'old-clean');
+    grunt.registerTask('clean', 'old-clean ember_templates string-replace');
 
 };
