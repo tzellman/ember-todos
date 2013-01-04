@@ -10,12 +10,12 @@ require([
         },
         renderTemplates:function () {
             this.render('todos_list', {
-                into:'todos',
+                into:'application',
                 controller:'filteredTodos'
             });
         },
         setupControllers:function (controller, model) {
-            this.controllerFor('filteredTodos').set('content', model);
+            this.controllerFor('filteredTodos').set('content', model).set('whenNone', 'No Completed Todos');
         }
     });
 });

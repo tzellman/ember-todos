@@ -16,4 +16,7 @@
       {{/unless}}
     </li>
   {{/each}}
+  {{#unless controller.length}}
+    <em class="label-warning">{{whenNone}}</em>
+  {{/unless}}
 </ul>

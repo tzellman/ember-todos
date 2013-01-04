@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span3">
-            {{outlet}}
+            {{outlet sidebar}}
         </div>
         <div class="span9">
             <header id="header">
@@ -9,6 +9,7 @@
             </header>
 
             {{view App.CreateTodoTextField}}
+            {{outlet}}
         </div>
     </div>
 </div>

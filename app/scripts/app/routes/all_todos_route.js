@@ -10,7 +10,7 @@ require([
         },
         renderTemplates:function () {
             this.render('todos_list', {
-                into:'todos'
+                into:'application'
             });
         },
         events:{

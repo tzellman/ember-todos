@@ -4,8 +4,7 @@ require([
 ], function (App, Ember) {
 
     App.FilteredTodosController = Ember.ArrayController.extend({
-        toggleTodo:function (event) {
-            var todo = event.context;
+        toggleTodo:function (todo) {
             todo.toggleProperty('completed');
             this.get('content').removeObject(todo);
         }

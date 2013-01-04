@@ -9,6 +9,12 @@ require([
             return Todo.all();
         },
 
+        renderTemplates:function () {
+            this.render({
+                outlet:'sidebar'
+            });
+        },
+
         events:{
             createTodo:function (route, text) {
                 if (!text.trim()) {

@@ -1,6 +1,4 @@
 <section id="main">
-  {{outlet}}
-
     <label class="checkbox">
   {{view Ember.Checkbox
          elementId="toggle-all"
@@ -15,6 +13,11 @@
       <strong>{{remaining}}</strong> item left
     {{else}}
       <strong>{{remaining}}</strong> items left
+    {{/if}}
+  </span><p/>
+  <span id="completed-count">
+    {{#if completed}}
+      <strong>{{completed}}</strong> completed
     {{/if}}
   </span>
 
